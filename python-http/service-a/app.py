@@ -2,20 +2,39 @@ from flask import Flask, request, jsonify
 import time
 import logging
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+SERVICE_NAME = "service-a"
 app = Flask(__name__)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+)
+
+@app.before_request
+def start_timer():
+    request._start_time = time.perf_counter()
+
+@app.after_request
+def log_request(response):
+    elapsed_ms = (time.perf_counter() - request._start_time) * 1000
+    logging.info(
+        "service=%s method=%s path=%s status=%s latency_ms=%.2f",
+        SERVICE_NAME,
+        request.method,
+        request.path,
+        response.status_code,
+        elapsed_ms,
+    )
+    return response
 
 @app.get("/health")
 def health():
-    return jsonify(status="ok")
+    return jsonify(status="ok"), 200
 
 @app.get("/echo")
 def echo():
-    start = time.time()
     msg = request.args.get("msg", "")
-    resp = {"echo": msg}
-    logging.info(f'service=A endpoint=/echo status=ok latency_ms={int((time.time()-start)*1000)}')
-    return jsonify(resp)
+    return jsonify(echo=msg), 200
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080)
+    app.run(host="127.0.0.1", port=8080, debug=False)
