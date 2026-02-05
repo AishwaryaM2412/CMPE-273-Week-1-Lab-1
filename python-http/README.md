@@ -69,51 +69,51 @@ Stop Service A and rerun the curl command to observe failure handling.
 
 1. Check python 3 and git versions.
 
-![alt text](Image_1.png)
+![alt text](output-images/Image_1.png)
 
 2. Git clone.
 
-![alt text](Image_2.png)
+![alt text](output-images/Image_2.png)
 
 3. Used “python-http/ (Flask + requests)”.
 
-![alt text](Image_3.png)
+![alt text](output-images/Image_3.png)
 
 4. Run both the services A and B.
 
 Service - A - Running:
 
-![alt text](Image_4.png)
+![alt text](output-images/Image_4.png)
 
 Service - B - Running:
 
-![alt text](Image_5.png)
+![alt text](output-images/Image_5.png)
 
 5. Test Service A health - status is “ok”.
 
-![alt text](Image_6.png)
+![alt text](output-images/Image_6.png)
 
 6. Test Service B - echo is “hello” and status is “ok”.
 
-![alt text](Image_7.png)
+![alt text](output-images/Image_7.png)
 
 7. Stop service A and keep service B running.
 
 Stopped service A-
 
-![alt text](Image_8.png)
+![alt text](output-images/Image_8.png)
 
 Service B is running-
 
-![alt text](Image_9.png)
+![alt text](output-images/Image_9.png)
 
 Received HTTP 503 error on the first line in below screenshot.
 
-![alt text](Image_10.png)
+![alt text](output-images/Image_10.png)
 
 When run in the browser, you see the JSON error log as shown in below screenshot.
 
-![alt text](Image_11.png)
+![alt text](output-images/Image_11.png)
 
 
 ## What makes this distributed?
