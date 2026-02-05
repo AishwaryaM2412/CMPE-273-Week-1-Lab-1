@@ -68,3 +68,6 @@ Stop Service A and rerun the curl command to observe failure handling.
 ## What makes this distributed?
 This is distributed because it consists of two independent services running as separate processes that communicate over a network using HTTP. 
 Even though they run on the same machine, they behave like separate systems: one service can fail independently, and the other must handle timeouts and errors gracefully.
+
+
+![alt text](<Screenshot 2026-02-04 at 11.56.42 PM.png>)
