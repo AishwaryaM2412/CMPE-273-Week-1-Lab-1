@@ -65,9 +65,57 @@ curl "http://127.0.0.1:8081/call-echo?msg=hello"
 
 Stop Service A and rerun the curl command to observe failure handling.
 
+## Screenshots:
+
+1. Check python 3 and git versions.
+
+![alt text](Image_1.png)
+
+2. Git clone.
+
+![alt text](Image_2.png)
+
+3. Used “python-http/ (Flask + requests)”.
+
+![alt text](Image_3.png)
+
+4. Run both the services A and B.
+
+Service - A - Running:
+
+![alt text](Image_4.png)
+
+Service - B - Running:
+
+![alt text](Image_5.png)
+
+5. Test Service A health - status is “ok”.
+
+![alt text](Image_6.png)
+
+6. Test Service B - echo is “hello” and status is “ok”.
+
+![alt text](Image_7.png)
+
+7. Stop service A and keep service B running.
+
+Stopped service A-
+
+![alt text](Image_8.png)
+
+Service B is running-
+
+![alt text](Image_9.png)
+
+Received HTTP 503 error on the first line in below screenshot.
+
+![alt text](Image_10.png)
+
+When run in the browser, you see the JSON error log as shown in below screenshot.
+
+![alt text](Image_11.png)
+
+
 ## What makes this distributed?
 This is distributed because it consists of two independent services running as separate processes that communicate over a network using HTTP. 
 Even though they run on the same machine, they behave like separate systems: one service can fail independently, and the other must handle timeouts and errors gracefully.
-
-
-![alt text](<Screenshot 2026-02-04 at 11.56.42 PM.png>)
