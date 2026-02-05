@@ -65,4 +65,5 @@ curl "http://127.0.0.1:8081/call-echo?msg=hello"
 
 Stop Service A and rerun the curl command to observe failure handling.
 
-
+## What makes this distributed?
+This is distributed because it consists of two independent services running as separate processes that communicate over a network using HTTP. Even though they run on the same machine, they behave like separate systems: one service can fail independently, and the other must handle timeouts and errors gracefully.
